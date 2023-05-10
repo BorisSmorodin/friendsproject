@@ -1,0 +1,2419 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Frineds Service Collection",
+    "description": "This is an API that allows users to register, send freind requests, accept or reject friend requests, delete other user from friend list, check friend list, check incoming and outgoing friend requests and chtck friendship status with other users.",
+    "contact": {
+      "name": "Boris Smorodin",
+      "email": "boryasmorodin@gmail.com"
+    },
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8001/api"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ],
+  "paths": {
+    "/register": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Registration",
+        "description": "This endpoint registers user and returns the registered user id and username.",
+        "operationId": "Registration",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/register_body"
+              },
+              "example": {
+                "username": "MyFirstUser"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Date": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Wed, 10 May 2023 09:52:01 GMT"
+                  }
+                }
+              },
+              "Server": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "WSGIServer/0.2 CPython/3.10.10"
+                  }
+                }
+              },
+              "Vary": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Accept, Cookie"
+                  }
+                }
+              },
+              "Allow": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "POST, OPTIONS"
+                  }
+                }
+              },
+              "X-Frame-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "DENY"
+                  }
+                }
+              },
+              "Content-Length": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "33"
+                  }
+                }
+              },
+              "X-Content-Type-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "nosniff"
+                  }
+                }
+              },
+              "Referrer-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_201"
+                },
+                "example": {
+                  "id": 1,
+                  "username": "MyFirstUser"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Date": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Wed, 10 May 2023 09:53:21 GMT"
+                  }
+                }
+              },
+              "Server": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "WSGIServer/0.2 CPython/3.10.10"
+                  }
+                }
+              },
+              "Vary": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Accept, Cookie"
+                  }
+                }
+              },
+              "Allow": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "POST, OPTIONS"
+                  }
+                }
+              },
+              "X-Frame-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "DENY"
+                  }
+                }
+              },
+              "Content-Length": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "45"
+                  }
+                }
+              },
+              "X-Content-Type-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "nosniff"
+                  }
+                }
+              },
+              "Referrer-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_400"
+                },
+                "example": {
+                  "username": [
+                    "This field may not be blank."
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/send_request": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Send Friend Request",
+        "description": "This endpoint creates a friend request record and returns its data. Also if the friendship request record with mirored attributes from_user and to_user was created earlier this endpoint updates such friend request record with status equals to one and creates a new friends record.",
+        "operationId": "SendFriendRequest",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/send_request_body"
+              },
+              "example": {
+                "from_user": 3,
+                "to_user": 2
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Date": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Wed, 10 May 2023 10:03:19 GMT"
+                  }
+                }
+              },
+              "Server": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "WSGIServer/0.2 CPython/3.10.10"
+                  }
+                }
+              },
+              "Vary": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Accept, Cookie"
+                  }
+                }
+              },
+              "Allow": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "POST, OPTIONS"
+                  }
+                }
+              },
+              "X-Frame-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "DENY"
+                  }
+                }
+              },
+              "Content-Length": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "45"
+                  }
+                }
+              },
+              "X-Content-Type-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "nosniff"
+                  }
+                }
+              },
+              "Referrer-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200"
+                },
+                "example": {
+                  "id": 1,
+                  "status": 1,
+                  "from_user": 1,
+                  "to_user": 2
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Date": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Wed, 10 May 2023 09:58:16 GMT"
+                  }
+                }
+              },
+              "Server": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "WSGIServer/0.2 CPython/3.10.10"
+                  }
+                }
+              },
+              "Vary": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Accept, Cookie"
+                  }
+                }
+              },
+              "Allow": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "POST, OPTIONS"
+                  }
+                }
+              },
+              "X-Frame-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "DENY"
+                  }
+                }
+              },
+              "Content-Length": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "45"
+                  }
+                }
+              },
+              "X-Content-Type-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "nosniff"
+                  }
+                }
+              },
+              "Referrer-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_201_1"
+                },
+                "example": {
+                  "id": 1,
+                  "status": 0,
+                  "from_user": 1,
+                  "to_user": 2
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Date": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Wed, 10 May 2023 10:07:07 GMT"
+                  }
+                }
+              },
+              "Server": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "WSGIServer/0.2 CPython/3.10.10"
+                  }
+                }
+              },
+              "Vary": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Accept, Cookie"
+                  }
+                }
+              },
+              "Allow": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "POST, OPTIONS"
+                  }
+                }
+              },
+              "X-Frame-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "DENY"
+                  }
+                }
+              },
+              "Content-Length": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "57"
+                  }
+                }
+              },
+              "X-Content-Type-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "nosniff"
+                  }
+                }
+              },
+              "Referrer-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_403"
+                },
+                "example": {
+                  "message": "Forbidden. Friend request is already exists"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/update_request/3": {
+      "put": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Accept Friend Request",
+        "description": "This endpoint updates friendship record and creates a new friends record if friendship status equals to one by provided friend request record id as url and user ids json as request body.",
+        "operationId": "AcceptFriendRequest",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/update_request_3_body"
+              },
+              "example": {
+                "status": 1,
+                "from_user": 3,
+                "to_user": 2
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Date": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Wed, 10 May 2023 10:09:05 GMT"
+                  }
+                }
+              },
+              "Server": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "WSGIServer/0.2 CPython/3.10.10"
+                  }
+                }
+              },
+              "Vary": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Accept, Cookie"
+                  }
+                }
+              },
+              "Allow": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "PUT, PATCH, OPTIONS"
+                  }
+                }
+              },
+              "X-Frame-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "DENY"
+                  }
+                }
+              },
+              "Content-Length": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "45"
+                  }
+                }
+              },
+              "X-Content-Type-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "nosniff"
+                  }
+                }
+              },
+              "Referrer-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_1"
+                },
+                "example": {
+                  "id": 3,
+                  "status": 1,
+                  "from_user": 3,
+                  "to_user": 2
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Date": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Wed, 10 May 2023 10:09:43 GMT"
+                  }
+                }
+              },
+              "Server": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "WSGIServer/0.2 CPython/3.10.10"
+                  }
+                }
+              },
+              "Vary": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Accept, Cookie"
+                  }
+                }
+              },
+              "Allow": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "PUT, PATCH, OPTIONS"
+                  }
+                }
+              },
+              "X-Frame-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "DENY"
+                  }
+                }
+              },
+              "Content-Length": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "30"
+                  }
+                }
+              },
+              "X-Content-Type-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "nosniff"
+                  }
+                }
+              },
+              "Referrer-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_403_1"
+                },
+                "example": {
+                  "message": "Forbidden action"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Date": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Wed, 10 May 2023 10:24:02 GMT"
+                  }
+                }
+              },
+              "Server": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "WSGIServer/0.2 CPython/3.10.10"
+                  }
+                }
+              },
+              "Vary": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Accept, Cookie"
+                  }
+                }
+              },
+              "Allow": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "PUT, PATCH, OPTIONS"
+                  }
+                }
+              },
+              "X-Frame-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "DENY"
+                  }
+                }
+              },
+              "Content-Length": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "51"
+                  }
+                }
+              },
+              "X-Content-Type-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "nosniff"
+                  }
+                }
+              },
+              "Referrer-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_404"
+                },
+                "example": {
+                  "message": "One or both users have not been found"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/delete_friend/1": {
+      "delete": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Delete Friend",
+        "description": "This endpoint deletes freind record and friend request record by provided users data in body and friends record ID in url.",
+        "operationId": "DeleteFriend",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "headers": {
+              "Date": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Wed, 10 May 2023 10:25:20 GMT"
+                  }
+                }
+              },
+              "Server": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "WSGIServer/0.2 CPython/3.10.10"
+                  }
+                }
+              },
+              "Vary": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Accept, Cookie"
+                  }
+                }
+              },
+              "Allow": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "DELETE, OPTIONS"
+                  }
+                }
+              },
+              "X-Frame-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "DENY"
+                  }
+                }
+              },
+              "Content-Length": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "0"
+                  }
+                }
+              },
+              "X-Content-Type-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "nosniff"
+                  }
+                }
+              },
+              "Referrer-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              }
+            },
+            "content": {}
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Date": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Wed, 10 May 2023 10:26:34 GMT"
+                  }
+                }
+              },
+              "Server": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "WSGIServer/0.2 CPython/3.10.10"
+                  }
+                }
+              },
+              "Vary": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Accept, Cookie"
+                  }
+                }
+              },
+              "Allow": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "DELETE, OPTIONS"
+                  }
+                }
+              },
+              "X-Frame-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "DENY"
+                  }
+                }
+              },
+              "Content-Length": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "23"
+                  }
+                }
+              },
+              "X-Content-Type-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "nosniff"
+                  }
+                }
+              },
+              "Referrer-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_404_1"
+                },
+                "example": {
+                  "detail": "Not found."
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/list_friends": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Show Friends List",
+        "description": "This endpoint returns list with ids of user friends by provided user id as GET parameter.",
+        "operationId": "ShowFriendsList",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 3
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Date": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Wed, 10 May 2023 10:31:58 GMT"
+                  }
+                }
+              },
+              "Server": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "WSGIServer/0.2 CPython/3.10.10"
+                  }
+                }
+              },
+              "Vary": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Accept, Cookie"
+                  }
+                }
+              },
+              "Allow": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "GET, HEAD, OPTIONS"
+                  }
+                }
+              },
+              "X-Frame-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "DENY"
+                  }
+                }
+              },
+              "Content-Length": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "22"
+                  }
+                }
+              },
+              "X-Content-Type-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "nosniff"
+                  }
+                }
+              },
+              "Referrer-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_2"
+                },
+                "example": {
+                  "Friends_list": [
+                    2,
+                    1
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/list_requests": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Show Requests Status",
+        "description": "This enpoint returns json containing lists of incoming and outgoing request for user by provided user ID as GET parameter",
+        "operationId": "ShowRequestsStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 3
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Date": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Wed, 10 May 2023 10:33:23 GMT"
+                  }
+                }
+              },
+              "Server": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "WSGIServer/0.2 CPython/3.10.10"
+                  }
+                }
+              },
+              "Vary": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Accept, Cookie"
+                  }
+                }
+              },
+              "Allow": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "GET, HEAD, OPTIONS"
+                  }
+                }
+              },
+              "X-Frame-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "DENY"
+                  }
+                }
+              },
+              "Content-Length": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "47"
+                  }
+                }
+              },
+              "X-Content-Type-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "nosniff"
+                  }
+                }
+              },
+              "Referrer-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_3"
+                },
+                "example": {
+                  "Incoming requests": [],
+                  "Outgoing requests": []
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/get_status": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Show User Requests",
+        "description": "This endpoint returns user to user friendship status by provided user ids.",
+        "operationId": "ShowUserRequests",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 3
+            }
+          },
+          {
+            "name": "target_id",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 2
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Date": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Wed, 10 May 2023 10:35:20 GMT"
+                  }
+                }
+              },
+              "Server": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "WSGIServer/0.2 CPython/3.10.10"
+                  }
+                }
+              },
+              "Vary": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Accept, Cookie"
+                  }
+                }
+              },
+              "Allow": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "GET, HEAD, OPTIONS"
+                  }
+                }
+              },
+              "X-Frame-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "DENY"
+                  }
+                }
+              },
+              "Content-Length": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "44"
+                  }
+                }
+              },
+              "X-Content-Type-Options": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "nosniff"
+                  }
+                }
+              },
+              "Referrer-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "style": "simple",
+                "explode": false,
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_4"
+                },
+                "example": {
+                  "message": "No information have been found"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RegistrationRequest": {
+        "title": "RegistrationRequest",
+        "required": [
+          "username"
+        ],
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "username": "MyFirstUser"
+        }
+      },
+      "RegistrationSuccessful": {
+        "title": "RegistrationSuccessful",
+        "required": [
+          "id",
+          "username"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "username": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "id": 1,
+          "username": "MyFirstUser"
+        }
+      },
+      "RegistrationFailed.BadRequest1": {
+        "title": "RegistrationFailed.BadRequest1",
+        "required": [
+          "username"
+        ],
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "array",
+            "description": "",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "example": {
+          "username": [
+            "This field may not be blank."
+          ]
+        }
+      },
+      "RegistrationFailed.Nullusername1": {
+        "title": "RegistrationFailed.Nullusername1",
+        "required": [
+          "detail"
+        ],
+        "type": "object",
+        "properties": {
+          "detail": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "detail": "JSON parse error - Expecting value: line 3 column 1 (char 24)"
+        }
+      },
+      "SendFriendRequestRequest": {
+        "title": "SendFriendRequestRequest",
+        "required": [
+          "from_user",
+          "to_user"
+        ],
+        "type": "object",
+        "properties": {
+          "from_user": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "to_user": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "from_user": 3,
+          "to_user": 2
+        }
+      },
+      "SendFriendRequestSuccessful": {
+        "title": "SendFriendRequestSuccessful",
+        "required": [
+          "from_user",
+          "id",
+          "status",
+          "to_user"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "from_user": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "to_user": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "id": 1,
+          "status": 0,
+          "from_user": 1,
+          "to_user": 2
+        }
+      },
+      "SendCrossFriendRequest": {
+        "title": "SendCrossFriendRequest",
+        "required": [
+          "from_user",
+          "id",
+          "status",
+          "to_user"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "from_user": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "to_user": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "id": 1,
+          "status": 1,
+          "from_user": 1,
+          "to_user": 2
+        }
+      },
+      "SendCrossFriendRequestFailed.AlreadyExists1": {
+        "title": "SendCrossFriendRequestFailed.AlreadyExists1",
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "message": "Forbidden. Friend request is already exists"
+        }
+      },
+      "AcceptFriendRequestRequest": {
+        "title": "AcceptFriendRequestRequest",
+        "required": [
+          "from_user",
+          "status",
+          "to_user"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "from_user": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "to_user": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "status": 1,
+          "from_user": 3,
+          "to_user": 2
+        }
+      },
+      "AcceptFriendRequestSuccessful": {
+        "title": "AcceptFriendRequestSuccessful",
+        "required": [
+          "from_user",
+          "id",
+          "status",
+          "to_user"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "from_user": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "to_user": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "id": 3,
+          "status": 1,
+          "from_user": 3,
+          "to_user": 2
+        }
+      },
+      "AcceptFriendRequestFailed.AlreadyFriends1": {
+        "title": "AcceptFriendRequestFailed.AlreadyFriends1",
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "message": "Forbidden action"
+        }
+      },
+      "AcceptFriendRequestFailed.UsernotFound1": {
+        "title": "AcceptFriendRequestFailed.UsernotFound1",
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "message": "One or both users have not been found"
+        }
+      },
+      "DeleteFriendRequest": {
+        "title": "DeleteFriendRequest",
+        "required": [
+          "user_1",
+          "user_2"
+        ],
+        "type": "object",
+        "properties": {
+          "user_1": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "user_2": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "user_1": 3,
+          "user_2": 2
+        }
+      },
+      "DeleteFriendFailed.Friendsnotfound1": {
+        "title": "DeleteFriendFailed.Friendsnotfound1",
+        "required": [
+          "detail"
+        ],
+        "type": "object",
+        "properties": {
+          "detail": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "detail": "Not found."
+        }
+      },
+      "ShowFriendsListSuccessful": {
+        "title": "ShowFriendsListSuccessful",
+        "required": [
+          "Friends_list"
+        ],
+        "type": "object",
+        "properties": {
+          "Friends_list": {
+            "type": "array",
+            "description": "",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        },
+        "example": {
+          "Friends_list": [
+            2,
+            1
+          ]
+        }
+      },
+      "ShowRequestsSuccessful": {
+        "title": "ShowRequestsSuccessful",
+        "required": [
+          "Incoming requests",
+          "Outgoing requests"
+        ],
+        "type": "object",
+        "properties": {
+          "Incoming requests": {
+            "type": "array",
+            "description": "",
+            "items": {
+              "type": "string"
+            }
+          },
+          "Outgoing requests": {
+            "type": "array",
+            "description": "",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "example": {
+          "Incoming requests": [],
+          "Outgoing requests": []
+        }
+      },
+      "ShowUserRequestsSuccessfulNoInfo": {
+        "title": "ShowUserRequestsSuccessfulNoInfo",
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "message": "No information have been found"
+        }
+      },
+      "ShowUserRequestsSuccesfullInfo": {
+        "title": "ShowUserRequestsSuccesfullInfo",
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "message": "Outgoing request. Status: ACCEPTED"
+        }
+      },
+      "register_body": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/RegistrationRequest"
+          },
+          {
+            "example": {
+              "username": "MyFirstUser"
+            }
+          }
+        ]
+      },
+      "inline_response_201": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/RegistrationSuccessful"
+          },
+          {
+            "example": {
+              "id": 1,
+              "username": "MyFirstUser"
+            }
+          }
+        ]
+      },
+      "inline_response_400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/RegistrationFailed.BadRequest1"
+          },
+          {
+            "example": {
+              "username": [
+                "This field may not be blank."
+              ]
+            }
+          }
+        ]
+      },
+      "send_request_body": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SendFriendRequestRequest"
+          },
+          {
+            "example": {
+              "from_user": 3,
+              "to_user": 2
+            }
+          }
+        ]
+      },
+      "inline_response_200": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SendCrossFriendRequest"
+          },
+          {
+            "example": {
+              "id": 1,
+              "status": 1,
+              "from_user": 1,
+              "to_user": 2
+            }
+          }
+        ]
+      },
+      "inline_response_201_1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SendFriendRequestSuccessful"
+          },
+          {
+            "example": {
+              "id": 1,
+              "status": 0,
+              "from_user": 1,
+              "to_user": 2
+            }
+          }
+        ]
+      },
+      "inline_response_403": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SendCrossFriendRequestFailed.AlreadyExists1"
+          },
+          {
+            "example": {
+              "message": "Forbidden. Friend request is already exists"
+            }
+          }
+        ]
+      },
+      "update_request_3_body": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AcceptFriendRequestRequest"
+          },
+          {
+            "example": {
+              "status": 1,
+              "from_user": 3,
+              "to_user": 2
+            }
+          }
+        ]
+      },
+      "inline_response_200_1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AcceptFriendRequestSuccessful"
+          },
+          {
+            "example": {
+              "id": 3,
+              "status": 1,
+              "from_user": 3,
+              "to_user": 2
+            }
+          }
+        ]
+      },
+      "inline_response_403_1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AcceptFriendRequestFailed.AlreadyFriends1"
+          },
+          {
+            "example": {
+              "message": "Forbidden action"
+            }
+          }
+        ]
+      },
+      "inline_response_404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AcceptFriendRequestFailed.UsernotFound1"
+          },
+          {
+            "example": {
+              "message": "One or both users have not been found"
+            }
+          }
+        ]
+      },
+      "inline_response_404_1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DeleteFriendFailed.Friendsnotfound1"
+          },
+          {
+            "example": {
+              "detail": "Not found."
+            }
+          }
+        ]
+      },
+      "inline_response_200_2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ShowFriendsListSuccessful"
+          },
+          {
+            "example": {
+              "Friends_list": [
+                2,
+                1
+              ]
+            }
+          }
+        ]
+      },
+      "inline_response_200_3": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ShowRequestsSuccessful"
+          },
+          {
+            "example": {
+              "Incoming requests": [],
+              "Outgoing requests": []
+            }
+          }
+        ]
+      },
+      "inline_response_200_4": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ShowUserRequestsSuccessfulNoInfo"
+          },
+          {
+            "example": {
+              "message": "No information have been found"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
